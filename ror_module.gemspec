@@ -30,11 +30,15 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
+  spec.add_development_dependency "rails", "~> 5.1.2"
   spec.add_development_dependency "bundler", "~> 1.15"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "cucumber"
   spec.add_development_dependency "aruba"  
+  
+  spec.add_development_dependency "generator_spec"
 
   spec.add_dependency "thor"
+  spec.add_dependency "react_on_rails"
 end

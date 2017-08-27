@@ -1,3 +1,5 @@
+require "rails/generators"
+
 module RorModule
   module Generators
     class NewGenerator < Rails::Generators::NamedBase
