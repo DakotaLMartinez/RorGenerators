@@ -1,0 +1,22 @@
+/* eslint new-cap: 0 */
+
+import Immutable from 'immutable';
+
+import * as actionTypes from '../constants/<%= module_name %>Constants';
+
+export const $$initialState = Immutable.fromJS({
+  
+});
+
+export default function <%= module_name %>Reducer($$state = $$initialState, action = null) {
+  const { type } = action;
+
+  switch (type) {
+
+    
+
+    default: {
+      return $$state;
+    }
+  }
+}

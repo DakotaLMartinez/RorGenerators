@@ -1,0 +1,8 @@
+import ReactOnRails from 'react-on-rails';
+
+import <%= module_name.capitalize %>App from './<%= module_name.capitalize %>App';
+
+// This is how react_on_rails can see the <%= module_name.capitalize %> in the browser.
+ReactOnRails.register({
+  <%= module_name.capitalize %>App,
+});
