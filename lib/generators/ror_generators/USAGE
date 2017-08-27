@@ -2,7 +2,7 @@ Description:
     Explain the generator
 
 Example:
-    rails generate ror_module Thing
+    rails generate ror_generators Thing
 
     This will create:
         what/will/it/create

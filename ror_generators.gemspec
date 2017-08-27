@@ -1,17 +1,17 @@
 # coding: utf-8
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "ror_module/version"
+require "ror_generators/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "ror_module"
-  spec.version       = RorModule::VERSION
+  spec.name          = "ror_generators"
+  spec.version       = RorGenerators::VERSION
   spec.authors       = ["Dakota Martinez"]
   spec.email         = ["dakotaleemusic@gmail.com"]
 
   spec.summary       = "Generators for React on Rails module"
   spec.description   = "Adds generators for react on rails modules"
-  spec.homepage      = "https://github.com/DakotaLMartinez/RorModules.git"
+  spec.homepage      = "https://github.com/DakotaLMartinez/RorGeneratorss.git"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'

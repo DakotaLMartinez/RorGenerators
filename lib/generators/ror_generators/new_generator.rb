@@ -1,6 +1,6 @@
 require "rails/generators"
 
-module RorModule
+module RorGenerators
   module Generators
     class NewGenerator < Rails::Generators::NamedBase
       source_root File.expand_path('../templates', __FILE__)

@@ -1,12 +1,12 @@
 require "test_helper"
-require "generators/ror_module/new_generator"
+require "generators/ror_generators/new_generator"
 
-class RorModule::NewGeneratorTest < ::Rails::Generators::TestCase
+class RorGenerators::NewGeneratorTest < ::Rails::Generators::TestCase
   include GeneratorTestHelpers
 
   class_attribute :install_destination
 
-  tests RorModule::Generators::NewGenerator
+  tests RorGenerators::Generators::NewGenerator
   destination File.expand_path("../tmp", File.dirname(__FILE__))
 
   remove_generator_sample_app
