@@ -38,7 +38,7 @@ module RorModule
       def copy_server_files
         empty_directory("app/views/#{module_name}")
         template "server/controller.rb", "app/controllers/#{module_name.pluralize}_controller.rb"
-        template "server/index.html.erb", "app/views/#{module_name}/index.html.erb"
+        template "server/index.html.erb", "app/views/#{module_name.pluralize}/index.html.erb"
         template "server/layout.html.erb", "app/views/layouts/#{module_name}.html.erb"
       end
       

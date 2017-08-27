@@ -31,4 +31,10 @@ class RorModule::NewGeneratorTest < ::Rails::Generators::TestCase
       assert_match("resources :products, only: :index", content)
     end
   end
+
+  test "generates index view" do 
+    assert_file "app/views/products/index.html.erb" do |content|
+      assert_match('<%= react_component("ProductApp", props: @product_props, prerender: false) %>', content)
+    end
+  end
 end
