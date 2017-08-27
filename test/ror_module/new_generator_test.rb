@@ -17,18 +17,18 @@ class RorModule::NewGeneratorTest < ::Rails::Generators::TestCase
   end
   
   setup do 
-    run_generator %w(test)
+    run_generator %w(product)
   end
 
   test "generates controller" do 
-    assert_file "app/controllers/test_controller.rb" do |content| 
-      assert_match("class TestController < ApplicationController", content)
+    assert_file "app/controllers/products_controller.rb" do |content| 
+      assert_match("class ProductsController < ApplicationController", content)
     end
   end
 
   test "generates route" do 
     assert_file "config/routes.rb" do |content|
-      assert_match("resources :test, only: :index", content)
+      assert_match("resources :products, only: :index", content)
     end
   end
 end

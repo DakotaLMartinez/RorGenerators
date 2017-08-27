@@ -1,4 +1,4 @@
-class <%= module_name.capitalize %>Controller < ApplicationController
+class <%= module_name.capitalize.pluralize %>Controller < ApplicationController
     layout "<%= module_name %>"
   
     def index
