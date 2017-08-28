@@ -1,5 +1,4 @@
 require "rails/generators"
-require "pry"
 
 module RorGenerators
   module Generators
