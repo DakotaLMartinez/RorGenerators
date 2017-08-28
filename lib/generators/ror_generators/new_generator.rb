@@ -49,8 +49,8 @@ module RorGenerators
       def copy_webpack_config
         if dest_file_exists?("client/webpack.config.js")
           inject_into_file "client/webpack.config.js", after: "'babel-polyfill',\n" do
-            "'./app/bundles/#{module_name}/startup/registration',\n"
-          end
+            "\t\t\t'./app/bundles/#{module_name}/startup/registration',\n"
+          end unless in_bundle?
         else
           template "client/webpack.config.js.erb", "client/webpack.config.js"
         end
@@ -131,8 +131,13 @@ module RorGenerators
         contents.gsub!(regexp, replacement)
         File.open(client_package_json, "w+") { |f| f.puts contents }
       end
+
+      def in_bundle?
+        File.readlines('client/webpack.config.js').find do |line|
+          line.match("'./app/bundles/#{module_name}/startup/registration',\n")
+        end
+      end
     
     end
-    
   end
 end
