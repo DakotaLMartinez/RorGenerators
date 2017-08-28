@@ -1,4 +1,5 @@
 require "rails/generators"
+require "pry"
 
 module RorGenerators
   module Generators
@@ -47,12 +48,19 @@ module RorGenerators
       end
 
       def copy_webpack_config
-        if dest_file_exists?("client/webpack.config.js")
-          inject_into_file "client/webpack.config.js", after: "'babel-polyfill',\n" do
-            "\t\t\t'./app/bundles/#{module_name}/startup/registration',\n"
-          end unless in_bundle?
-        else
+        if !dest_file_exists?("client/webpack.config.js")
           template "client/webpack.config.js.erb", "client/webpack.config.js"
+        end
+      end
+
+      def add_file_to_bundle
+        if dest_file_exists?("client/webpack.config.js")
+          if not_in_bundle?
+            puts "not in bundle"
+            inject_into_file "client/webpack.config.js", after: "'babel-polyfill',\n" do
+              "\t\t\t'./app/bundles/#{module_name}/startup/registration',\n"
+            end
+          end
         end
       end
 
@@ -132,10 +140,13 @@ module RorGenerators
         File.open(client_package_json, "w+") { |f| f.puts contents }
       end
 
-      def in_bundle?
-        File.readlines('client/webpack.config.js').find do |line|
-          line.match("'./app/bundles/#{module_name}/startup/registration',\n")
+      def not_in_bundle?
+        if Pathname.new('client/webpack.config.js').file? 
+          match = File.readlines('client/webpack.config.js').find do |line|
+            line.include?("#{module_name}/startup/registration")
+          end
         end
+        match.nil?
       end
     
     end

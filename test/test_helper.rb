@@ -2,6 +2,7 @@ $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 # require "serviceworker/rails"
 
 require "minitest/autorun"
+#require "pry-rescue/minitest"
 require "minitest/pride"
 
 # Load support files

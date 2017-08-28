@@ -35,6 +35,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "gem-release"  
+  spec.add_development_dependency "pry"
+  spec.add_development_dependency "pry-rescue"
   
   spec.add_development_dependency "generator_spec"
 

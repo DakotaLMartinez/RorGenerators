@@ -18,7 +18,7 @@ class RorGenerators::NewGeneratorTest < ::Rails::Generators::TestCase
   
   setup do 
     run_generator %w(product)
-    run_generator %w(test -s)
+    run_generator %w(test)
   end
 
   test "generates controller" do 
@@ -83,5 +83,17 @@ class RorGenerators::NewGeneratorTest < ::Rails::Generators::TestCase
       assert_match("'./app/bundles/product/startup/registration',\n", content)
       assert_match("'./app/bundles/test/startup/registration',\n", content)
     end
+  end
+
+  test "doesn't add file to bundle if it's already there" do 
+    run_generator %w(product)
+    assert_file "client/webpack.config.js" do |content|
+      product_bundles = content.split("\n").select do |line|
+        #puts line
+        line.include?("'./app/bundles/product/startup/registration',")
+      end.length
+      assert_equal(1, product_bundles)
+    end
+    
   end
 end
