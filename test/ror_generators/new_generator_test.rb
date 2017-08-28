@@ -18,6 +18,7 @@ class RorGenerators::NewGeneratorTest < ::Rails::Generators::TestCase
   
   setup do 
     run_generator %w(product)
+    run_generator %w(test -s)
   end
 
   test "generates controller" do 
@@ -74,6 +75,13 @@ class RorGenerators::NewGeneratorTest < ::Rails::Generators::TestCase
   test "generates webpack.config.js" do 
     assert_file "client/webpack.config.js" do |content|
       assert_match("'./app/bundles/product/startup/registration',", content)
+    end
+  end
+
+  test "adds to webpack.config.js on second run" do 
+    assert_file "client/webpack.config.js" do |content|
+      assert_match("'./app/bundles/product/startup/registration',", content)
+      assert_match("'./app/bundles/test/startup/registration',", content)
     end
   end
 end
