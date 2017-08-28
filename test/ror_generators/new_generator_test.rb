@@ -80,8 +80,8 @@ class RorGenerators::NewGeneratorTest < ::Rails::Generators::TestCase
 
   test "adds to webpack.config.js on second run" do 
     assert_file "client/webpack.config.js" do |content|
-      assert_match("'./app/bundles/product/startup/registration',", content)
-      assert_match("'./app/bundles/test/startup/registration',", content)
+      assert_match("'./app/bundles/product/startup/registration',\n", content)
+      assert_match("'./app/bundles/test/startup/registration',\n", content)
     end
   end
 end

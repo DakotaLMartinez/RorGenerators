@@ -47,10 +47,9 @@ module RorGenerators
       end
 
       def copy_webpack_config
-        if dest_file_exists?("client/webpack.config.js.erb")
-          inject_into_file "client/webpack.config.js.erb", after: "'babel-polyfill',\n" do <<-'RUBY'
-            puts "'./app/bundles/#{module_name}/startup/registration',"
-          RUBY
+        if dest_file_exists?("client/webpack.config.js")
+          inject_into_file "client/webpack.config.js", after: "'babel-polyfill',\n" do
+            "'./app/bundles/#{module_name}/startup/registration',\n"
           end
         else
           template "client/webpack.config.js.erb", "client/webpack.config.js"
